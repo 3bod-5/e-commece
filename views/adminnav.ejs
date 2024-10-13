@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Example</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Reset default browser styles */
+        body, h1, p, ul {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            width: 50px;
+            height: 50px;
+        }
+        
+        /* Navigation bar styling */
+        nav.navbar {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+       .navbar-brand {
+        }
+       .navbar-links {
+        display: flex;
+            list-style-type: none;
+        }
+       .navbar-links li {
+        margin-right: 20px;
+        }
+       .navbar-links li a {
+        color: white;
+            text-decoration: none;
+        }
+       .navbar-links li a:hover {
+
+        }
+       .content {
+        margin-top: 20px;
+        }
+       .content h1 {
+        font-size: 24px;
+        }
+       .content p {
+        font-size: 18px;
+        }
+       .content img {
+        width: 200px;
+        height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="/admin"><img src="/assets/icons/shopping.png">shopping</a>
+        </div>
+        <ul class="navbar-links">
+            <li><a href="/admin">Home</a></li>
+            <li><a href="/all-users">All Users</a></li>
+            <li><a href="/all-products">All Products</a></li>
+            <li><a href="/">logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is a simple example of a webpage with a navigation bar.</p>
+    </div>
+</body>
+</html>

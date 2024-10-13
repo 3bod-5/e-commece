@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /*same here as before style nav on the top and product down*/
+        /*style for the product down*/
+       .products {
+        font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+       .product-container {
+        display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+       .product-details {
+        font-size: 18px;
+            margin-bottom: 10px;
+        }
+        #name {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        /*same here as before style nav on the top and product down*/
+        
+
+    </style>
+
+
+</head>
+<body>
+    <%-include ('adminnav.ejs')%>
+<div class="products">
+    <div class="container">
+        <h1>My Products</h1>
+        
+            
+                <% users.forEach(product => { %>
+                    <div class="products">
+                        
+                            <div class="product-container">
+                                <div class="product-details">
+                                    <h1 id="name"><%= product.name %></h1>
+                                    <h1 id="name"><%= product.price %></h1>
+                                    <h1 id="name"><%= product.seller %></h1>
+                                    <button type="submit"><a href="/all-products/delete-product/<%= product.id %>">Delete</a></button>
+                                </div>
+                            </div>
+                        
+                <% }) %>
+            
+    </div>  
+</div>    
+</body>
+</html>

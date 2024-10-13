@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* CSS styles for the container, table, and table headers */
+       .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        }
+        th {
+        background-color: #f2f2f2;
+        }
+        /* CSS styles for the navigation bar */
+        nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+        }
+        nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 10px;
+        }
+        /* CSS styles for the "Add Product" button */
+        button {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+        button:hover {
+        background-color: #45a049;
+        }
+        /* CSS styles for the "Delete" button */
+        button.delete {
+        background-color: #f44336;
+        }
+        button.delete:hover {
+        background-color: #f44336;
+        }
+        /* CSS styles for the "Edit" button */
+        button.edit {
+        background-color: #ffeb3b;
+        }
+        button.edit:hover {
+        background-color: #ffeb3b;
+        }
+        /* CSS styles for the "View Details" button */
+        button.view-details {
+        background-color: #008CBA;
+        }
+        button.view-details:hover {
+        background-color: #008CBA;
+        }
+        /* CSS styles for the "Back to Homepage" button */
+        button.back-to-homepage {
+        background-color: #575757;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+        button.back-to-homepage:hover {
+        background-color: #575757;
+        }
+        /* CSS styles for the "Logout" button */
+        button.logout {
+        background-color: #f44336;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        }
+        button.logout:hover {
+        background-color: #f44336;
+        }
+        
+    </style>
+</head>
+<body>
+    <%-include ('sellernav.ejs')%>
+    <div class="container">
+        <h1>My Products</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.name %></td>
+                        <td><%= product.price %></td>
+                        <td><%= product.quantity %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

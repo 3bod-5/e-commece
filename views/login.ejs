@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        /* Login container styling */
+        .login-container {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Form styling */
+       .form-group {
+        margin-bottom: 20px;
+        }
+        
+        /* Radio button styling */
+       .form-group-radio label {
+        margin-bottom: 0;
+        }
+        
+        /* Register link styling */
+       .register-link {
+        text-decoration: none;
+        color: #007bff;
+        }
+        
+        /* Form button styling */
+        button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        }
+        
+        /* Error message styling */
+       .error-message {
+        color: red;
+        margin-top: 5px;
+        }
+        
+        /* Form validation error styling */
+        input:invalid +.error-message {
+            display: block;
+        }
+        
+        /* Responsive design styling */
+        @media screen and (max-width: 600px) {
+           .login-container {
+                width: 100%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="/" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label>User Type</label>
+                <div class="form-group-radio">
+                    <label for="seller">
+                        <input type="radio" id="seller" name="type" value="seller" required> Seller
+                    </label>
+                    <label for="customer">
+                        <input type="radio" id="customer" name="type" value="customer" required> Customer
+                    </label>
+                    <label for="admin">
+                        <input type="radio" id="admin" name="type" value="admin" required> Admin
+                    </label>
+                </div>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <a href="/signin" class="register-link">Register</a>
+    </div>
+</body>
+</html>
+

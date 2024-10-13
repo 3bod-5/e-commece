@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+/*  I want to display products each two besides each other with margin in between */
+        
+       .products {
+        display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+               .products.product-container {
+                flex-basis: 50%;
+                margin-bottom: 20px;
+            }
+            
+                /*  I want to display product details in a modal when clicked */
+                
+                .product-container:hover.product-details {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+                border-radius: 10px;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+            }
+            
+                .product-container:hover.product-details h1 {
+                color: #fff;
+            }
+            
+                .product-container:hover.product-details p {
+                color: #fff;
+            }
+            
+                .product-container:hover.product-details.buy-now {
+                background-color: #fff;
+                color: #4CAF50;
+            }
+            
+                .product-container:hover.product-details.buy-now:hover {
+                background-color: #45a049;
+            }
+            
+                /*  I want to display a "Buy Now" button in the product details */
+                
+                .buy-now {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            
+                .buy-now:hover {
+                background-color: #45a049;
+            }
+            
+                /*  I want to display a product name, price, and description in the product details */
+                
+                #name, p.price, p.description {
+                font-size: 16px;
+                color: #555;
+            }
+            
+                /*  I want to display a product image in the product details */
+                
+                img.product-image {
+                width: 100%;
+                height: auto;
+            }
+            
+                /*  I want to make the product details modal responsive */
+                
+                @media only screen and (max-width: 600px) {
+                   .products {
+                        flex-direction: column;
+                    }
+                   .product-container {
+                        width: 100%;
+                    }
+                   .product-details {
+                        position: relative;
+                    }
+                }
+                
+                /*  I want to add a sticky navigation bar at the top of the page */
+                
+                header {
+                    position: sticky;
+                    top: 0;
+                    background-color: #f2f2f2;
+                    padding: 10px;
+                }
+                
+                /*  I want to add a footer at the bottom of the page */
+                
+                footer {
+                    background-color: #f2f2f2;
+                    padding: 10px;
+                    text-align: center;
+                }
+                
+                /*  I want to add a button to add a new product */
+                
+                button.add-product {
+                    padding: 10;
+                    background-color: #4CAF50;
+                    color: #fff;
+                    font-size: 16px;
+                    cursor: pointer;
+                    margin-bottom: 20px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 200px;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+
+
+       
+        
+    
+
+    </style>
+</head>
+<body>
+    <%-include ('navbar.ejs')%>
+<div class="products">
+    <div class="container">
+        <h1>My Products</h1>
+        
+            
+                <% products.forEach(product => { %>
+                    <div class="products">
+                        <form method="post" action="/product/add-to-cart">
+                            <div class="product-container">
+                                <div class="product-image">
+                                    <img src="/assets/icons/sport-car.png" alt="Product Image">
+                                </div>
+                                <div class="product-details">
+                                    <h1 id="name"><%= product.name %></h1>
+                                    <p class="price"><%= product.price %></p>
+                                    <p class="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste praesentium minima dolore excepturi eligendi officiis aut fugit pariatur deserunt blanditiis nesciunt dignissimos nam omnis explicabo laboriosam, quod inventore magni reiciendis.</p>
+                                    <input type="hidden" name="name" value="<%= product.name %>">
+                                    <input type="hidden" name="price" value="<%= product.price %>">
+                                    <button type="submit" class="buy-now">Add to cart</button>
+                                </div>
+                            </div>
+                        </form>
+                <% }) %>
+            
+    </div>  
+</div>    
+</body>
+</html>
+

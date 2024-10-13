@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        .cart-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cart-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-items li {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.cart-items h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.cart-items p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.continue-shopping {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.continue-shopping:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <%-include ('navbar.ejs')%>
+
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+        <ul class="cart-items">
+            <% if (cart.length === 0) { %>
+                <li>Your cart is empty.</li>
+            <% } else { %>
+                <% cart.forEach(item => { %>
+                    <li>
+                        <h2><%= item.name %></h2>
+                        <p>Price: $<%= item.price %></p>
+                    </li>
+                    <form method="post" action="/cart/update-quantity" class="quantity-form">
+                        <input type="number" name="quantity" value="<%= item.quantity || 1 %>" min="1">
+                        <input type="hidden" name="name" value="<%= item.name %>">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form method="post" action="/cart/remove" style="display:inline;">
+                        <input type="hidden" name="name" value="<%= item.name %>">
+                        <button type="submit" class="remove-button">Remove from cart</button>
+                    </form>
+                <% }) %>
+            <% } %>
+        </ul>
+        <a href="/product" class="continue-shopping">Continue Shopping</a>
+        <a href="/checkout" class="continue-shopping">Check Out</a>
+    </div>
+
+    <script src="/scripts/main.js"></script>
+</body>
+</html>

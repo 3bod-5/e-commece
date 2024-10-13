@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* i want the nav bar to be on the top*/
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        /* i want the products section to be centered */
+       .products {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        }
+        /* Add your custom styles here */
+        
+       .product-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+        h1 {
+            font-size: 24px;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        } 
+    </style>
+</head>
+<body>
+    <%-include ('adminnav.ejs')%>
+<div class="products">
+    <div class="container">
+        <h1>My Products</h1>
+        
+            
+                <% users.forEach(product => { %>
+                    <div class="products">
+                        
+                            <div class="product-container">
+                                <div class="product-details">
+                                    <h1 id="name"><%= product.name %></h1>
+                                    <h1 id="name"><%= product.type %></h1>
+                                    <button type="submit"><a href="/all-users/delete/<%= product.id %>">Delete</a></button>
+                                </div>
+                            </div>
+                        
+                <% }) %>
+            
+    </div>  
+</div>    
+</body>
+</html>
